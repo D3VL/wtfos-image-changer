@@ -14,7 +14,7 @@ render:
 all: render
 
 	cd ./jni && ndk-build
-	cp ./jni/libs/armeabi-v7a/draw_to_splash ./data/opt/bin
+	cp ./libs/armeabi-v7a/draw_to_splash ./data/opt/bin
 
 	chmod +x ./control/postinst
 	chmod +x ./control/prerm
@@ -35,5 +35,5 @@ clean:
 	rm ./data/opt/share/image-changer/screensaver02.data
 	rm -rf ./data/opt/bin/draw_to_splash
 	rm -rf ipk
-	rm -rf ./jni/libs
-	rm -rf ./jni/obj
+	rm -rf ./libs
+	rm -rf ./obj
