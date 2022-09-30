@@ -98,6 +98,7 @@ jobs:
           FFMPEG_PATH: ${{ steps.setup-ffmpeg.outputs.ffmpeg-path }}
         run: |
           export PATH=$ANDROID_NDK_HOME:$FFMPEG_PATH:$PATH
+          make
 
       - name: Upload artifact containing all IPKs
         uses: actions/upload-artifact@v2
