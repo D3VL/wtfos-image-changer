@@ -4,7 +4,7 @@ VERSION = $(shell cat ./control/control | grep Version | cut -d" " -f2)
 IPK_NAME = "${NAME}_${VERSION}_${ARCH}.ipk"
 
 
-jni:
+jni: jni/*
 	cd ./jni && ndk-build
 	cp ./jni/libs/armeabi-v7a/draw_to_splash ./data/opt/bin
 	chmod +x ./data/opt/bin/draw_to_splash
