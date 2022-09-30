@@ -1,0 +1,7 @@
+Package: image-changer
+Version: 0.0.1
+Maintainer: D3VL LTD <jack@d3vl.com>
+Description: Changes the default DJI Splash Screen and Screensavers to WTFOS ones
+Architecture: pigeon-glasses
+Homepage: https://github.com/d3vl/wtfos-image-changer
+Depends: dinit
