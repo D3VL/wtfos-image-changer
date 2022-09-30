@@ -15,10 +15,12 @@ all: render
 
 	cd ./jni && ndk-build
 	cp ./libs/armeabi-v7a/draw_to_splash ./data/opt/bin
+	cp ./libs/armeabi-v7a/draw_to_screensaver ./data/opt/bin
 
 	chmod +x ./control/postinst
 	chmod +x ./control/prerm
 	chmod +x ./data/opt/bin/draw_to_splash
+	chmod +x ./data/opt/bin/draw_to_screensaver
 	chmod +x ./data/opt/bin/image-changer.sh
 
 	mkdir -p ipk
@@ -34,6 +36,7 @@ clean:
 	rm ./data/opt/share/image-changer/screensaver01.data
 	rm ./data/opt/share/image-changer/screensaver02.data
 	rm -rf ./data/opt/bin/draw_to_splash
+	rm -rf ./data/opt/bin/draw_to_screensaver
 	rm -rf ipk
-	rm -rf ./libs
-	rm -rf ./obj
+	rm -rf libs
+	rm -rf obj
