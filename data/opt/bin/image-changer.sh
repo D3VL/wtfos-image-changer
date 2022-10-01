@@ -45,24 +45,24 @@ fi
 echo "[image-changer] searching for screensavers";
 if [[ -f "/data/screensaver01.data" ]]; then
     echo "[image-changer] screensaver01.data found";
-    mount -o bind /data/screensaver01.data /system/gui/screen01.data
+    draw_to_screensaver 1 /data/screensaver01.data
 else
-    mount -o bind /opt/share/image-changer/screensaver01.data /system/gui/screen01.data
+    draw_to_screensaver 1 /opt/share/image-changer/screensaver01.data
 fi
 
 if [[ -f "/data/screensaver02.data" ]]; then
     echo "[image-changer] screensaver02.data found";
-    mount -o bind /data/screensaver02.data /system/gui/screen02.data
+    draw_to_screensaver 2 /data/screensaver02.data
 else
-    mount -o bind /opt/share/image-changer/screensaver02.data /system/gui/screen02.data
+    draw_to_screensaver 2 /opt/share/image-changer/screensaver02.data
 fi
 
 
 echo "[image-changer] searching for splashscreen";
 if [[ -f /data/splashscreen.yuv ]]; then
     echo "[image-changer] found custom splashscreen";
-    ./draw_to_splash /data/splashscreen.yuv > /dev/null
+    draw_to_splash /data/splashscreen.yuv > /dev/null
 else
     echo "[image-changer] no custom splashscreen found";
-    ./draw_to_splash /opt/share/splashscreen.yuv > /dev/null
+    draw_to_splash /opt/share/image-changer/splashscreen.yuv > /dev/null
 fi

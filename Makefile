@@ -3,12 +3,6 @@ ARCH = $(shell cat ./control/control | grep Architecture | cut -d" " -f2)
 VERSION = $(shell cat ./control/control | grep Version | cut -d" " -f2)
 IPK_NAME = "${NAME}_${VERSION}_${ARCH}.ipk"
 
-
-jni:
-	cd ./jni && ndk-build
-	cp ./jni/libs/armeabi-v7a/draw_to_splash ./data/opt/bin
-	chmod +x ./data/opt/bin/draw_to_splash
-
 render:
 	ffmpeg -i "./images/splashscreen.png" -vf "scale=1440:810,pad=w=1536:h=810:x=0:y=0:color=black" -pix_fmt nv12 "./images/splashscreen.yuv"
 	ffmpeg -i "./images/screensaver01.png" -vf "scale=1440:810" -pix_fmt bgra "./images/screensaver01.rgb"
@@ -17,10 +11,16 @@ render:
 	mv ./images/screensaver01.rgb ./data/opt/share/image-changer/screensaver01.data
 	mv ./images/screensaver02.rgb ./data/opt/share/image-changer/screensaver02.data
 
-all: jni render
+all: render
+
+	cd ./jni && ndk-build
+	cp ./libs/armeabi-v7a/draw_to_splash ./data/opt/bin
+	cp ./libs/armeabi-v7a/draw_to_screensaver ./data/opt/bin
 
 	chmod +x ./control/postinst
 	chmod +x ./control/prerm
+	chmod +x ./data/opt/bin/draw_to_splash
+	chmod +x ./data/opt/bin/draw_to_screensaver
 	chmod +x ./data/opt/bin/image-changer.sh
 
 	mkdir -p ipk
@@ -32,4 +32,11 @@ all: jni render
 	cd ipk/ && tar --owner=0 --group=0 -czvf "./${IPK_NAME}" ./control.tar.gz ./data.tar.gz ./debian-binary
 
 clean:
+	rm ./data/opt/share/image-changer/splashscreen.yuv
+	rm ./data/opt/share/image-changer/screensaver01.data
+	rm ./data/opt/share/image-changer/screensaver02.data
+	rm -rf ./data/opt/bin/draw_to_splash
+	rm -rf ./data/opt/bin/draw_to_screensaver
 	rm -rf ipk
+	rm -rf libs
+	rm -rf obj
