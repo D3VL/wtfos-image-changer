@@ -193,7 +193,7 @@ int main(int argc, char *argv[]) {
             return 1;
         }
 
-        // target = ((new_address - needle_offset) + ion_rsv_start);
+        target = ((new_address - needle_offset) + ion_rsv_start);
 
         printf("Found image at %ld\n", ((new_address - needle_offset) + ion_rsv_start));
     } else {
