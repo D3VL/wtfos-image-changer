@@ -45,16 +45,16 @@ fi
 echo "[image-changer] searching for screensavers";
 if [[ -f "/data/screensaver01.data" ]]; then
     echo "[image-changer] screensaver01.data found";
-    draw_to_screensaver /system/gui/screen01.data
+    draw_to_screensaver 1 /data/screensaver01.data
 else
-    draw_to_screensaver /system/gui/screen01.data
+    draw_to_screensaver 1 /opt/share/image-changer/screensaver01.data
 fi
 
 if [[ -f "/data/screensaver02.data" ]]; then
     echo "[image-changer] screensaver02.data found";
-    draw_to_screensaver /system/gui/screen02.data
+    draw_to_screensaver 2 /data/screensaver02.data
 else
-    draw_to_screensaver /system/gui/screen02.data
+    draw_to_screensaver 2 /opt/share/image-changer/screensaver02.data
 fi
 
 
