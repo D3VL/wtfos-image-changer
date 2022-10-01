@@ -8,9 +8,6 @@
 #include <sys/mman.h>
 #include <errno.h>
 
-// get 0x12FB9F bytes from /dev/urandom
-// then write it to memory at 0x2E000100
-
 int main(int argc, char *argv[]) {
 
     off_t target = 0x2E000000;  // 0x2E000100;
