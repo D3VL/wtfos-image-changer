@@ -41,6 +41,17 @@ if [[ SD_CARD ]]; then
     echo "[image-changer] SD card functions complete";
 fi
 
+echo "[image-changer] searching for splashscreen";
+if [[ -f /data/splashscreen.yuv ]]; then
+    echo "[image-changer] found custom splashscreen";
+    draw_to_splash /data/splashscreen.yuv > /dev/null
+else
+    echo "[image-changer] no custom splashscreen found";
+    draw_to_splash /opt/share/image-changer/splashscreen.yuv > /dev/null
+fi
+
+# Delay 10s so that glasses service is stable and not overwriting our images
+sleep 10;
 
 echo "[image-changer] searching for screensavers";
 if [[ -f "/data/screensaver01.data" ]]; then
@@ -55,14 +66,4 @@ if [[ -f "/data/screensaver02.data" ]]; then
     draw_to_screensaver 2 /data/screensaver02.data
 else
     draw_to_screensaver 2 /opt/share/image-changer/screensaver02.data
-fi
-
-
-echo "[image-changer] searching for splashscreen";
-if [[ -f /data/splashscreen.yuv ]]; then
-    echo "[image-changer] found custom splashscreen";
-    draw_to_splash /data/splashscreen.yuv > /dev/null
-else
-    echo "[image-changer] no custom splashscreen found";
-    draw_to_splash /opt/share/image-changer/splashscreen.yuv > /dev/null
 fi
