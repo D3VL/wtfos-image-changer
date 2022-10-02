@@ -3,7 +3,10 @@ Sets the screensaver and splash screen to wtfos images
 
 ## Want to change the images? 
 
-I'll be releasing a package soon that will let you just put png's onto your microsd, but if you really can't wait - here's how to do it:
+### The Easy way
+Install `image-configurator` from the fpv.wtf repository and follow the instructions there.
+
+### The Manual way
 
 Before you begin, you'll need FFMPEG installed on your pc, a microsd card, and some images to use.<br>
 Make sure the images are 16:9 or be prepared to see some stretchy horror! 
