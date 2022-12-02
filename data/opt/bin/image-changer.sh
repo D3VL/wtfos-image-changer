@@ -1,5 +1,11 @@
 #!/system/bin/sh
 
+# non DIY mode on gl170 can cause (rare) crashes at startup
+if [ "$(getprop ro.product.device)" = "pigeon_wm170_gls" ] && [ "$(unrd product_type)" != "wm150_gls" ]; then
+    echo "[image-changer] gl170 and not DIY mode, bailing";
+    exit 0
+fi
+
 echo "[image-changer] start";
 
 function checkImageSize {
